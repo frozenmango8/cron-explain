@@ -10,7 +10,7 @@ Explain a cron expression in plain English and show when it runs next.
 go install github.com/frozenmango8/cron-explain/cmd/cron-explain@latest
 ```
 
-Version tags also get Linux, macOS, and Windows archives (see `.goreleaser.yaml`).
+`.goreleaser.yaml` builds Linux, macOS, and Windows archives for version tags.
 
 ## Usage
 
