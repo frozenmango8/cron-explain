@@ -1,0 +1,4 @@
+/cron-explain
+/dist/
+*.exe
+*.test
