@@ -186,8 +186,16 @@ func parsePart(part string, lo, hi, acceptHi int, names map[string]int, sunday7 
 }
 
 func fill(dst *field, start, end, step int, sunday7 bool) {
-	for v := start; v <= end; v += step {
+	if step < 1 || start > end {
+		return
+	}
+	// Don't let a huge step wrap the int and spin.
+	for v := start; v <= end; {
 		dst.add(v, sunday7)
+		if v > end-step {
+			break
+		}
+		v += step
 	}
 }
 

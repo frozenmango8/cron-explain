@@ -197,6 +197,20 @@ func TestParseReboot(t *testing.T) {
 	}
 }
 
+func TestParseLargeStep(t *testing.T) {
+	e, err := Parse("0/9223372036854775807 * * * *")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assertVals(t, "minute", e.minute, []int{0})
+
+	e, err = Parse("*/9223372036854775807 * * * *")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assertVals(t, "minute", e.minute, []int{0})
+}
+
 func TestParseListAndNames(t *testing.T) {
 	e, err := Parse("0,30 0,12 1-3 JAN-MAR SUN,WED")
 	if err != nil {
